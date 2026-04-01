@@ -27,6 +27,7 @@ def handle_user_input(state, parsed_input):
         parsed_input.get("intent") is None and
         parsed_input.get("device_scope") is None and
         parsed_input.get("issue_type") is None and
+        parsed_input.get("already_rebooted") is None and 
         state.stage == "qualifying"
     ):
         return rewrite_response(
@@ -80,8 +81,9 @@ def handle_user_input(state, parsed_input):
         if decision == "no":
             state.stage = "end"
             return rewrite_response(
-                "Based on what you've told me, a router reboot is unlikely to fix this. "
-                "This may be a signal or service issue."
+                "Since you've already tried restarting the router and the issue is still affecting everything, a reboot is unlikely to fix this. " \
+                "Sorry about that. This may be an issue with your internet service, so you may need to contact your service provider for further help. " \
+                "You can start a new chat anytime if you need assistance with something else."
             )
 
         if decision == "yes":
@@ -154,7 +156,7 @@ def handle_user_input(state, parsed_input):
                 return format_step(state.reboot_step_index)
             else:
                 state.stage = "post_check"
-                return rewrite_response("All steps are done. Did this fix your wifi issue? (yes/no)")
+                return rewrite_response("All steps are done. Did this fix your issue? (yes/no)")
 
         return rewrite_response(
             f"Please complete this step first.\n\n{format_step(state.reboot_step_index)}"

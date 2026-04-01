@@ -191,7 +191,7 @@ def rewrite_response(text: str):
         return text
 
     prompt = f"""
-Rewrite the following message to sound natural, friendly, and professional.
+Rewrite the message below to be clear, natural, and professional.
 
 Do NOT change meaning.
 Keep it concise.
@@ -200,7 +200,7 @@ Message:
 "{text}"
 """
 
-    result = call_llm(prompt, temperature=0.5)
+    result = call_llm(prompt, temperature=0.2)
 
     return result if result else text
 
