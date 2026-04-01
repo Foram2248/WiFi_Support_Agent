@@ -1,6 +1,6 @@
 # WiFi Support Agent
 
-A simple LLM-assisted WiFi troubleshooting interface built for the RouteThis AI Developer take-home assessment.
+A simple LLM-assisted WiFi troubleshooting interface that helps users diagnose connectivity issues and guides them through router reboot when appropriate.
 
 ---
 
