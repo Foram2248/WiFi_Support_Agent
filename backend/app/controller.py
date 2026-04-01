@@ -141,7 +141,7 @@ def handle_user_input(state, parsed_input):
                 f"Let's finish this step first.\n\n{format_step(state.reboot_step_index)}"
             )
 
-        if intent in ["done", "skip"]:
+        if intent == "done":
 
             # only validate first step
             if state.reboot_step_index == 0:
@@ -157,6 +157,14 @@ def handle_user_input(state, parsed_input):
             else:
                 state.stage = "post_check"
                 return rewrite_response("All steps are done. Did this fix your issue? (yes/no)")
+
+
+        if intent == "skip":
+            state.awaiting_confirmation = True
+            return rewrite_response(
+                f"It’s important to complete this step for the reboot to work properly.\n\n"
+                f"Did you complete this step?\n\n{format_step(state.reboot_step_index)} (yes/no)"
+            )
 
         return rewrite_response(
             f"Please complete this step first.\n\n{format_step(state.reboot_step_index)}"

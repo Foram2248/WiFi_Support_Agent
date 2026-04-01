@@ -11,7 +11,7 @@ This project helps users troubleshoot WiFi connectivity issues through a structu
 It:
 
 - Asks qualifying questions (device scope, issue type, reboot status)
-- Decides whether a router reboot is appropriate
+- Decides whether a router reboot is appropriate or not?
 - Guides users step-by-step through a reboot process
 - Handles messy or ambiguous input using LLM fallback
 - Ends the conversation clearly when the issue is resolved or not applicable
