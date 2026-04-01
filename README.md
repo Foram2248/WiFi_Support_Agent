@@ -115,7 +115,7 @@ uvicorn app.main:app --reload
 Backend runs at:
 
 ```
-http://127.0.0.1:8000
+http://127.0.0.1:8000/docs
 ```
 
 ---
@@ -137,7 +137,7 @@ npm install
 ### 9. Run frontend
 
 ```bash
-npm start
+npm run dev
 ```
 
 Frontend runs at:
